@@ -1,10 +1,12 @@
 const http = require('http');
+const fs = require('fs');
 
 const server = http.createServer((req, res) => {
-  console.log(req);
+  fs.readFile('../client/index.html', (error, content) => {
+    res.end(content);
+  })
 
-  res.end('hello world');
-});
+})
 
 server.listen(8080);
-console.log("working....")
+console.log("working....");
